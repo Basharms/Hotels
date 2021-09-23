@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<file-systems model-entity="FileSystems" workspace-home="./WebContent/WEB-INF">
+ <file-system NAME="hotels" location="D:/Bashar/Project/Hotels/hotels" model-entity="FileSystemFolder"/>
+ <file-system NAME="src" location="%workspace.home%/src" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-INF" location="%workspace.home%" model-entity="FileSystemFolder"/>
+ <file-system NAME="WEB-ROOT" location="%workspace.home%/.." model-entity="FileSystemFolder"/>
+ <file-system NAME="lib" location="%workspace.home%/lib" model-entity="FileSystemFolder"/>
+ <web model-entity="JstWeb"/>
+</file-systems>

@@ -1,0 +1,65 @@
+/**
+ * 
+ */
+package com.maf.hotels.model;
+
+import java.util.Date;
+
+
+/**
+ * @author Bashar
+ *
+ */
+public class CrazyHotels {
+	
+	private String hotelName;
+	private String hotelRate;
+	private float price;
+	private float discount;
+	private String[] roomAmenities;
+	
+	/**
+	 * 
+	 */
+	public CrazyHotels() {
+	
+	}
+	
+	/**
+	 * @param hotelName
+	 * @param hotelRate
+	 * @param price
+	 * @param discount
+	 * @param roomAmenities
+	 * @param city
+	 * @param fromDate
+	 * @param toDate
+	 * @param numberOfAdults
+	 */
+	public CrazyHotels(String hotelName, String hotelRate, float price, float discount, String[] roomAmenities,
+			String city, Date fromDate, Date toDate, int numberOfAdults) {
+		super();
+		this.hotelName = hotelName;
+		this.hotelRate = hotelRate;
+		this.price = price;
+		this.discount = discount;
+		this.roomAmenities = roomAmenities;
+	}
+	
+	/**
+	 * @param hotelName
+	 * @param hotelRate
+	 * @param price
+	 * @param discount
+	 * @param roomAmenities
+	 */
+	public CrazyHotels(String hotelName, String hotelRate, float price, float discount, String[] roomAmenities) {
+		super();
+		this.hotelName = hotelName;
+		this.hotelRate = hotelRate;
+		this.price = price;
+		this.discount = discount;
+		this.roomAmenities = roomAmenities;
+	}
+	
+}

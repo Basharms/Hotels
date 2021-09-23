@@ -1,0 +1,207 @@
+/**
+ * 
+ */
+package com.maf.hotels.service;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.maf.hotels.model.BestHotels;
+import com.maf.hotels.model.CrazyHotels;
+import com.maf.hotels.util.HttpRequestHelper;
+
+/**
+ * @author Bashar
+ *
+ */
+public class AvailableHotelsService {
+	
+	/**
+	 * This method used to collect the parameters from the request and send http request to crazy hotel API.
+	 * @param request
+	 * @return
+	 */
+	public String sendBestHotelsRequest(HttpServletRequest request) {
+		System.out.println("AvailableHotels.sendBestHotelsRequest()");
+		List<BestHotels> bestHotelsList = null;
+		StringBuilder sb = new StringBuilder();
+		int adultsCount = 0;
+		Date fromDate = null;
+		Date toDate = null;
+
+		// Read the request parameters
+		String city = request.getParameter("city");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		try {
+			// Using try catch here in case any failure in parsing integer or dates.
+			try {
+				String dateFromStr = request.getParameter("fromDate");
+				String toDateStr = request.getParameter("toDate");
+
+				fromDate = sdf.parse(dateFromStr);
+				toDate = sdf.parse(toDateStr);
+				adultsCount = Integer.parseInt(request.getParameter("numberOfAdults"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+
+			// Append  the parameter in string builder
+			sb.append("city").append("=").append(city)
+			.append("&")
+			.append("fromDate").append("=").append(sdf.format(fromDate))
+			.append("&")
+			.append("toDate").append("=").append(sdf.format(toDate))
+			.append("&")
+			.append("numberOfAdults").append("=").append(adultsCount);
+
+			System.out.println("Request parameters: ");
+			System.out.println("- City: " + city);
+			System.out.println("- From date: " + sdf.format(fromDate));
+			System.out.println("- To date: " + sdf.format(toDate));
+			System.out.println("- Adults count: " + adultsCount);
+
+
+			String url = "http://localhost:8083/BestHotels/Hotels?";
+
+			String response = HttpRequestHelper.sendHttpPost(url, sb.toString());
+			System.out.println("Response :: " + response);
+
+			ObjectMapper mapper = new ObjectMapper();
+
+			// Convert the result to list to sort them according to hotelRate
+			bestHotelsList = Arrays.asList(mapper.readValue(response, BestHotels[].class));
+			System.out.println("bestHotelsList.size() :: " + bestHotelsList.size());
+
+			// Sort the list
+			Collections.sort(bestHotelsList, new Comparator<BestHotels>() {
+
+				public int compare(BestHotels o1, BestHotels o2) {
+					return Integer.compare(o2.getHotelRate(),o1.getHotelRate());
+				}
+			});
+
+			return convertListToJsonArray(bestHotelsList);
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+		
+	/**
+	 * This method used to collect the parameters from the request and send http request to crazy hotel API.
+	 * @param request
+	 * @return
+	 */
+	public String sendCrazyHotelsRequest(HttpServletRequest request) {
+		try {
+			System.out.println("AvailableHotels.sendCrazyHotelsRequest()");
+			// Read the request parameters
+			StringBuilder sb = new StringBuilder();
+			int adultsCount = 0;
+			Date fromDate = null;
+			Date toDate = null;
+			List<CrazyHotels> crazyHotelsList = null;
+
+			String city = request.getParameter("city");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+			// Using try catch here in case any failure in parsing integer or dates.
+			try {
+				String dateFromStr = request.getParameter("fromDate");
+				String toDateStr = request.getParameter("toDate");
+
+				fromDate = sdf.parse(dateFromStr);
+				toDate = sdf.parse(toDateStr);
+				adultsCount = Integer.parseInt(request.getParameter("numberOfAdults"));
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			sb.append("city").append("=").append(city)
+			.append("&")
+			.append("from").append("=").append(sdf.format(fromDate))
+			.append("&")
+			.append("To").append("=").append(sdf.format(toDate))
+			.append("&")
+			.append("adultsCount").append("=").append(adultsCount);
+
+			System.out.println("Request parameters: ");
+			System.out.println("- City: " + city);
+			System.out.println("- From date: " + sdf.format(fromDate));
+			System.out.println("- To date: " + sdf.format(toDate));
+			System.out.println("- Adults count: " + adultsCount);
+
+
+			String url = "http://localhost:8082/CrazyHotels/Hotels?";
+
+			String response = HttpRequestHelper.sendHttpPost(url, sb.toString());
+			System.out.println("Response :: " + response);
+
+			ObjectMapper mapper = new ObjectMapper();
+
+			// Convert the result to list to sort them according to hotelRate
+			crazyHotelsList = Arrays.asList(mapper.readValue(response, CrazyHotels[].class));
+			System.out.println("crazyHotelsList.size() :: " + crazyHotelsList.size());
+
+			// Sort the list
+			Collections.sort(crazyHotelsList, new Comparator<CrazyHotels>() {
+
+				public int compare(CrazyHotels o1, CrazyHotels o2) {
+					return o2.getHotelRate().compareTo(o1.getHotelRate()));
+				}
+			});
+
+			return response;
+		} catch (JsonParseException e) {
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+
+	}
+	
+	/**
+	 * This method used to convert list to json string
+	 * @param <T>
+	 * @param list
+	 * @return json string
+	 * @throws IOException
+	 */
+	public <T> String convertListToJsonArray(List<T> list) throws IOException {  
+
+	    final ByteArrayOutputStream out = new ByteArrayOutputStream();
+	    final ObjectMapper mapper = new ObjectMapper();
+
+	    mapper.writeValue(out, list);
+
+	    final byte[] data = out.toByteArray();
+	    return new String(data);
+	}
+
+}

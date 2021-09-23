@@ -1,0 +1,89 @@
+/**
+ * 
+ */
+package com.maf.hotels.util;
+
+import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+/**
+ * @author Administrator
+ *
+ */
+public class HttpRequestHelper {
+	
+	
+	/**
+	 * This  method used to make http call to the provided url.
+	 * @param reqUrl
+	 * @param requestParameters
+	 * @return
+	 */
+	public static String sendHttpPost(String reqUrl, String requestParameters) {
+		
+		String response = "";
+		
+		try {
+			StringBuilder output = null;
+			// Prepare the request
+			URL url = new URL(reqUrl);
+			HttpURLConnection  conn = (HttpURLConnection )url.openConnection();
+			conn.setDoOutput(true);
+			conn.setRequestMethod("POST");
+			
+			OutputStreamWriter writer = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
+			
+			// Write parameters
+            writer.write(requestParameters);
+            writer.flush();
+            
+            // Get the response
+            output = new StringBuilder();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            String line;
+			
+            while ((line = reader.readLine()) != null) {
+                output.append(line);
+            }
+            
+            writer.close();
+            reader.close();
+            
+            response = output.toString();
+            System.out.println("Response :: " + response);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return response;
+	}
+	
+	/**
+	 * This method used to convert list to json string
+	 * @param <T>
+	 * @param list
+	 * @return json string
+	 * @throws IOException
+	 */
+	public <T> String convertListToJsonArray(List<T> list) throws IOException {  
+
+	    final ByteArrayOutputStream out = new ByteArrayOutputStream();
+	    final ObjectMapper mapper = new ObjectMapper();
+
+	    mapper.writeValue(out, list);
+
+	    final byte[] data = out.toByteArray();
+	    return new String(data);
+	}
+
+}

@@ -1,0 +1,6 @@
+127.0.0.1 - - [21/Sep/2021:22:46:40 +0300] "GET / HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [21/Sep/2021:22:46:43 +0300] "GET /hotels/AvailableHotels HTTP/1.1" 200 68
+127.0.0.1 - - [21/Sep/2021:22:47:10 +0300] "GET /hotels/AvailableHotels HTTP/1.1" 200 68
+127.0.0.1 - - [21/Sep/2021:22:47:55 +0300] "GET /hotels/AvailableHotels HTTP/1.1" 200 68
+127.0.0.1 - - [21/Sep/2021:22:47:55 +0300] "GET /favicon.ico HTTP/1.1" 404 759
+0:0:0:0:0:0:0:1 - - [21/Sep/2021:22:48:03 +0300] "GET /hotels/AvailableHotels HTTP/1.1" 200 68

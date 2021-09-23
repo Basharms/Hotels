@@ -1,0 +1,34 @@
+/**
+ * 
+ */
+package com.maf.crazyHotels.service;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.maf.crazyHotels.model.CrazyHotels;
+/**
+ * @author Administrator
+ *
+ */
+public class CrazyHotelsService {
+	
+	/**
+	 * @return all crazy hotels
+	 */
+	public List<CrazyHotels> getAllHotels() {
+		
+		List<CrazyHotels> hotels= new ArrayList<CrazyHotels>();
+		String[] rotanaRoomAmenities ={"Hair dryer", "Television", "Kitchen facilities"};
+		String[] sheratonRoomAmenities ={"Hair dryer", "Television", "Kitchen facilities", "Computer and Internet access", "Washer and Dryer"};
+		
+		CrazyHotels rotanaCrazyHotel = new CrazyHotels("Amman Rotana", "****", 125.25f, 0, rotanaRoomAmenities, "AMM", null, null, 3);
+		CrazyHotels sheratonCrazyHotel = new CrazyHotels("Sheraton Doha", "*****", 500, 0, sheratonRoomAmenities, "AMM", null, null, 2);
+		
+		hotels.add(sheratonCrazyHotel);
+		hotels.add(rotanaCrazyHotel);
+		
+		return hotels;
+		
+	}
+
+}

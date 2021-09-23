@@ -1,0 +1,169 @@
+package com.maf.hotels;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.maf.hotels.util.HttpRequestHelper;
+
+/**
+ * Servlet implementation class AvailableHotels
+ */
+@WebServlet("/AvailableHotels")
+public class AvailableHotels extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public AvailableHotels() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+//		response.setContentType("application/json");
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.print("<html><body>");
+		out.print("<h3>HELLLLLLO HOTEL</h3>");
+		out.print("</html></body>");
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("AvailableHotels.doPost()");
+		
+		String bestHotelsResponse = sendBestHotelsRequest(request);
+		String crazyHotelsResponse = sendCrazyHotelsRequest(request);
+		
+		// Send the response as json format
+		PrintWriter out = response.getWriter();
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");
+		out.print(bestHotelsResponse);
+		out.print(crazyHotelsResponse);
+		out.flush();
+	}
+	
+	/**
+	 * This method used to collect the parameters from the request and send http request to crazy hotel API.
+	 * @param request
+	 * @return
+	 */
+	public String sendBestHotelsRequest(HttpServletRequest request) {
+		System.out.println("AvailableHotels.sendBestHotelsRequest()");
+		// Read the request parameters
+		StringBuilder sb = new StringBuilder();
+		int adultsCount = 0;
+		Date fromDate = null;
+		Date toDate = null;
+		String city = request.getParameter("city");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		// Using try catch here in case any failure in parsing integer or dates.
+		try {
+			String dateFromStr = request.getParameter("fromDate");
+			String toDateStr = request.getParameter("toDate");
+
+			fromDate = sdf.parse(dateFromStr);
+			toDate = sdf.parse(toDateStr);
+			adultsCount = Integer.parseInt(request.getParameter("numberOfAdults"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		sb.append("city").append("=").append(city)
+		.append("&")
+		.append("fromDate").append("=").append(sdf.format(fromDate))
+		.append("&")
+		.append("toDate").append("=").append(sdf.format(toDate))
+		.append("&")
+		.append("numberOfAdults").append("=").append(adultsCount);
+		
+		System.out.println("Request parameters: ");
+		System.out.println("- City: " + city);
+		System.out.println("- From date: " + sdf.format(fromDate));
+		System.out.println("- To date: " + sdf.format(toDate));
+		System.out.println("- Adults count: " + adultsCount);
+		
+		
+		String url = "http://localhost:8083/BestHotels/Hotels?";
+		
+		String response = HttpRequestHelper.sendHttpPost(url, sb.toString());
+		System.out.println("Response :: " + response);
+		
+		return response;
+
+	}
+		
+	/**
+	 * This method used to collect the parameters from the request and send http request to crazy hotel API.
+	 * @param request
+	 * @return
+	 */
+	public String sendCrazyHotelsRequest(HttpServletRequest request) {
+
+		System.out.println("AvailableHotels.sendCrazyHotelsRequest()");
+		// Read the request parameters
+		StringBuilder sb = new StringBuilder();
+		int adultsCount = 0;
+		Date fromDate = null;
+		Date toDate = null;
+		String city = request.getParameter("city");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+
+		// Using try catch here in case any failure in parsing integer or dates.
+		try {
+			String dateFromStr = request.getParameter("fromDate");
+			String toDateStr = request.getParameter("toDate");
+
+			fromDate = sdf.parse(dateFromStr);
+			toDate = sdf.parse(toDateStr);
+			adultsCount = Integer.parseInt(request.getParameter("numberOfAdults"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		}
+		sb.append("city").append("=").append(city)
+		.append("&")
+		.append("from").append("=").append(sdf.format(fromDate))
+		.append("&")
+		.append("To").append("=").append(sdf.format(toDate))
+		.append("&")
+		.append("adultsCount").append("=").append(adultsCount);
+		
+		System.out.println("Request parameters: ");
+		System.out.println("- City: " + city);
+		System.out.println("- From date: " + sdf.format(fromDate));
+		System.out.println("- To date: " + sdf.format(toDate));
+		System.out.println("- Adults count: " + adultsCount);
+		
+		
+		String url = "http://localhost:8082/CrazyHotels/Hotels?";
+		
+		String response = HttpRequestHelper.sendHttpPost(url, sb.toString());
+		System.out.println("Response :: " + response);
+		
+		return response;
+
+	}
+
+}

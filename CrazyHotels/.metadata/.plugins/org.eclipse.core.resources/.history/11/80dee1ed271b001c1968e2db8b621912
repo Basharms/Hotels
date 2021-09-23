@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.maf.crazyHotels.service;
+import java.util.List;
+
+import com.maf.crazyHotels.model.CrazyHotels;
+/**
+ * @author Administrator
+ *
+ */
+public class CrazyHotelsService {
+	
+	public List<CrazyHotels> getAllHotels() {
+		
+		String[] roomAmenities ={"Hair dryer", "Television", "Kitchen facilities"};
+		CrazyHotels crazyHotel = new CrazyHotels("Amman Rotana", "****", 125.25f, 0, null, null, null, null, 0)
+		
+	}
+
+}

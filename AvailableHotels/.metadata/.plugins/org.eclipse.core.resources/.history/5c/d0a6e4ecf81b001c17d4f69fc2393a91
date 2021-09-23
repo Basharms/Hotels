@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+package com.maf.hotels.junit.test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+/**
+ * @author Administrator
+ *
+ */
+class HotelsTest {
+
+	@Test
+	void test() {
+		fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.maf.hotels.util;
+
+/**
+ * @author Administrator
+ *
+ */
+public class HttpRequestHelper {
+
+}

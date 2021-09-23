@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package com.maf.hotels.model;
+
+/**
+ * @author Administrator
+ *
+ */
+public class AvailableHotelsData {
+
+}

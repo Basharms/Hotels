@@ -1,0 +1,13 @@
+1632251853290	Rename resource 'directory'
+1632256917677	Copy compilation unit
+1632336926703	Delete elements
+1632341775324	Rename method 'readAndPrepareRequestParameters'
+1632341897634	Rename method 'prepareBestHotelsRequestParameters'
+1632344408422	Delete element
+1632345078198	Rename local variable 'studentList'
+1632346250406	Rename field 'hotelRate'
+1632350254258	Rename local variable 'bestHotelsResponse'
+1632350344277	Rename local variable 'availableHotelsData'
+1632350505955	Rename local variable 'crazyHotelsResponse'
+1632350525637	Rename local variable 'bestHotels'
+1632351648225	Delete element

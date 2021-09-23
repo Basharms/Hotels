@@ -1,0 +1,32 @@
+/**
+ * 
+ */
+package com.maf.bestHotels.model;
+
+import java.util.Date;
+
+
+/**
+ * @author Bashar
+ *
+ */
+public class BestHotels {
+	
+	private String hotelName;
+	private int hotelRate;
+	private float hotelFare;
+	private String[] roomAmenities;
+	private String city;
+	private Date fromDate;
+	private Date toDate;
+	private Integer numberOfAdults;
+	
+	
+	/**
+	 * 
+	 */
+	public BestHotels() {
+	
+	}
+	
+}

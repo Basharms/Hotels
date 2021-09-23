@@ -1,0 +1,35 @@
+/**
+ * This is service  class to get all hotels and do the other functionalities if needed.
+ */
+package com.maf.bestHotels.service;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.maf.BestHotels.model.BestHotels;
+/**
+ * @author Administrator
+ *
+ */
+public class BestHotelsService {
+	
+	/**
+	 * @return all Best hotels
+	 */
+	public List<BestHotels> getAllHotels() {
+		
+		// Fill  dummy data  for 2 hotels.
+		List<BestHotels> hotels= new ArrayList<BestHotels>();
+		String[] rotanaRoomAmenities ={"Hair dryer", "Television", "Kitchen facilities"};
+		String[] sheratonRoomAmenities ={"Hair dryer", "Television", "Kitchen facilities", "Computer and Internet access", "Washer and Dryer"};
+		
+		BestHotels rotanaBestHotel = new BestHotels("Amman Rotana", "****", 125.25f, 0, rotanaRoomAmenities);
+		BestHotels sheratonBestHotel = new BestHotels("Sheraton", "*****", 500, 0.05F, sheratonRoomAmenities);
+		
+		hotels.add(sheratonBestHotel);
+		hotels.add(rotanaBestHotel);
+		
+		return hotels;
+		
+	}
+
+}

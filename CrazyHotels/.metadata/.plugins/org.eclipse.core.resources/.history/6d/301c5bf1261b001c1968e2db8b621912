@@ -1,0 +1,19 @@
+/**
+ * 
+ */
+package com.maf.crazyHotels.service;
+import java.util.List;
+
+import com.maf.crazyHotels.model.CrazyHotels;
+/**
+ * @author Administrator
+ *
+ */
+public class CrazyHotelsService {
+	
+	public List<CrazyHotels> getAllHotel() {
+		
+		
+	}
+
+}

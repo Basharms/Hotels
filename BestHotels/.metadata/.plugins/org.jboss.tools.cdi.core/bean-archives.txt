@@ -1,0 +1,6 @@
+path=D:\Bashar\Project\BestHotels\BestHotels\WebContent\WEB-INF\lib\servlet-api.jar
+size=198758
+archive=0
+path=D:\Bashar\Project\BestHotels\BestHotels\WebContent\WEB-INF\lib\gson-2.8.2.jar
+size=232932
+archive=0

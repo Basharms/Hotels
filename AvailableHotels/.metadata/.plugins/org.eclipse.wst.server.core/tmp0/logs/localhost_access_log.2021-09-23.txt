@@ -1,0 +1,16 @@
+127.0.0.1 - - [23/Sep/2021:00:08:09 +0300] "GET / HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:08:48 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 500 2551
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:10:16 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:12:07 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:24:15 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:24:33 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:25:36 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 665
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:00:57:47 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 417
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:01:05:18 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 500 1417
+127.0.0.1 - - [23/Sep/2021:01:05:51 +0300] "GET / HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:01:05:57 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 655
+127.0.0.1 - - [23/Sep/2021:01:15:37 +0300] "GET / HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:01:20:06 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 655
+127.0.0.1 - - [23/Sep/2021:01:49:12 +0300] "GET / HTTP/1.1" 404 748
+0:0:0:0:0:0:0:1 - - [23/Sep/2021:01:49:37 +0300] "POST /hotels/AvailableHotels?city=AMM&fromDate=2021-10-25&toDate=2021-10-29&numberOfAdults=2 HTTP/1.1" 200 677
+127.0.0.1 - - [23/Sep/2021:03:05:21 +0300] "GET / HTTP/1.1" 404 748

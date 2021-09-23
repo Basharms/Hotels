@@ -1,0 +1,9 @@
+127.0.0.1 - - [23/Sep/2021:00:10:16 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 343
+127.0.0.1 - - [23/Sep/2021:00:12:07 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 343
+127.0.0.1 - - [23/Sep/2021:00:24:15 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 343
+127.0.0.1 - - [23/Sep/2021:00:24:33 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 343
+127.0.0.1 - - [23/Sep/2021:00:25:36 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 343
+127.0.0.1 - - [23/Sep/2021:00:57:47 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 333
+127.0.0.1 - - [23/Sep/2021:01:05:57 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 333
+127.0.0.1 - - [23/Sep/2021:01:20:06 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 333
+127.0.0.1 - - [23/Sep/2021:01:49:37 +0300] "POST /CrazyHotels/Hotels? HTTP/1.1" 200 333

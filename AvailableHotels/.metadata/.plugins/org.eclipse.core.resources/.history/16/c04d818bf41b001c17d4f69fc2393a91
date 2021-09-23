@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+package com.maf.hotels.model;
+
+/**
+ * @author Administrator
+ *
+ */
+public class AvailableHotelsData {
+	
+	private String provider;
+	private String hotelName;
+	private float hotelFare;
+	private String[] roomAmenities;
+
+}

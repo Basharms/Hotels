@@ -1,0 +1,20 @@
+/**
+ * 
+ */
+package com.maf.hotels.util;
+
+/**
+ * @author Administrator
+ *
+ */
+public class HttpRequestHelper {
+	
+	public static String sendHttpPost(String reqUrl, String queryString) {
+		
+		
+		
+		
+		return "";
+	}
+
+}
